@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background: black;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.error {
+    border-color: red;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.c-basket {
+    background: #f4f4f4;
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 760px;
+}
+
+.c-basket__header {
+    width: 100%;
+    height: 52px;
+    background: #333333;
+    margin: 0 0 15px 0;
+    border: 1px solid #f7f7f7;
+}
+
+.header__text {
+    color: white;
+    padding: 15px 0 0 25px;
+}
+
+.c-basket__item {
+    width: 100%;
+    background: white;
+    border: 1px solid #f7f7f7;
+    margin: 0 0 15px 0;
+    padding-bottom: 40px;
+}
+
+.item__error {
+    width: 100%;
+    height: 120px;
+    border: 1px solid red;
+    position: relative;
+    color: red;
+}
+
+.error__symbol {
+    font-size: 38px;
+    position: absolute;
+    left: 20px;
+    top: 30px;
+}
+
+.error__line {
+    width: 1px;
+    height: 97px;
+    background: #f7f7f7;
+    position: absolute;
+    left: 75px;
+    top: 11px;
+}
+
+.error__text {
+    font-weight: bold;
+    line-height: 120px;
+    margin-left: 90px;
+}
+
+.item__picture {
+    width: 170px;
+    height: 170px;
+    background: coral;
+    float: left;
+    margin: 40px 25px 0 40px;
+}
+
+.item__data {
+    margin: 40px 40px 0 0;
+}
+
+.data__header {
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.data__id {
+    font-style: italic;
+    color: gray;
+    padding-bottom: 20px;
+}
+
+.data__other {
+    padding-bottom: 25px;
+}
+
+.other__price {
+    float: right;
+}
+
+.data__qty {
+    font-size: 18px;
+}
+
+.qty__input {
+    width: 55px;
+    height: 38px;
+}
+
+.qty__update {
+    outline: none;
+    border: none;
+    background: white;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.qty__total {
+    float: right;
+}
+
+.c-basket__footer {
+    width: 100%;
+    height: 69px;
+    background: white;
+}
+
+.c-basket__button {
+    width: 214px;
+    height: 49px;
+    background: #cc0000;
+    margin: 10px 20px 10px 0;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+.item__close {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    color: grey;
+    cursor: pointer;
+    background: white;
+    font-size: 28px;
+    float: right;
+    position: relative;
+    top: -15px;
+    right: -15px;
+}
