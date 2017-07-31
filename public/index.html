@@ -15,46 +15,50 @@
 <form class="c-basket">
 
     <div class="c-basket__header">
-        <h3 class="header__text">2010 FORD ESCAPE 4DR SPORT UTILITY HYBRID</h3>
+        <h3 class="header__text"></h3>
     </div>
 
-    <div class="c-basket__item">
+    <div class = "l-items">
+        <div class="c-basket__item">
 
-        <div class="item__error">
-            <span class="error__symbol">⚠</span>
-            <div class="error__line"></div>
-            <p class="error__text">Sorry, the maximum quantity you can order is 10</p>
+            <div class="l-errwrap">
+                <div class="item__error">
+                <span class="error__symbol">⚠</span>
+                <div class="error__line"></div>
+                <p class="error__text"></p>
+                </div>
+            </div>
+
+            <img class="item__picture" src="">
+
+            <div class="item__data">
+                <input class="item__close" type="button" value="˟">
+                <h4 class="data__header">
+                    <span class="db-header"></span>
+                </h4>
+                <p class="data__id">
+                    Product <span class="db-id">#0062375</span>
+                </p>
+                <p class="data__vehicle">
+                    <b>Vehicle:</b>
+                    <span class="db-vehicle"></span>
+                </p>
+                <p class="data__other">
+                    <b>Size/Style:</b>
+                    <span class="db-style"></span>
+                    <b class="other__price">$<span class="db-price"></span></b>
+                </p>
+                <p class="data__qty">
+                    <b>QTY:</b>
+                    <input class="qty__input" value="1" >
+                    <input class="qty__update" type="button" value="Update">
+                    <b class="qty__total">TOTAL:
+                        $<span class="db-total"></span>
+                    </b>
+                </p>
+            </div>
+
         </div>
-
-        <div class="item__picture"></div>
-
-        <div class="item__data">
-            <input class="item__close" type="button" value="˟">
-            <h4 class="data__header">
-                <span class="db-header">MotoMaster Total Terrain</span>
-            </h4>
-            <p class="data__id">
-                Product <span class="db-id">#0062375</span>
-            </p>
-            <p class="data__vehicle">
-                <b>Vehicle:</b>
-                <span class="db-vehicle">2010 Ford Escape 4 Dr Sport utility Hybrid</span>
-            </p>
-            <p class="data__other">
-                <b>Size/Style:</b>
-                <span class="db-style">235/70R16 106T</span>
-                <b class="other__price">$<span class="db-price">46.00</span></b>
-            </p>
-            <p class="data__qty">
-                <b>QTY:</b>
-                <input class="qty__input">
-                <input class="qty__update" type="button" value="Update">
-                <b class="qty__total">TOTAL:
-                    $<span class="db-total">184.00</span>
-                </b>
-            </p>
-        </div>
-
     </div>
 
     <div class="c-basket__footer">

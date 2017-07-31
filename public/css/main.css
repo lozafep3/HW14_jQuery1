@@ -13,6 +13,15 @@ body {
 
 .error {
     border-color: red;
+    background: rgba(255, 0, 0, 0.25);
+}
+
+.unavailable {
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 200px;
+    text-align: center;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -35,6 +44,7 @@ body {
 .header__text {
     color: white;
     padding: 15px 0 0 25px;
+    text-transform: uppercase;
 }
 
 .c-basket__item {
@@ -78,7 +88,6 @@ body {
 .item__picture {
     width: 170px;
     height: 170px;
-    background: coral;
     float: left;
     margin: 40px 25px 0 40px;
 }
@@ -113,6 +122,7 @@ body {
 .qty__input {
     width: 55px;
     height: 38px;
+    outline: none;
 }
 
 .qty__update {
