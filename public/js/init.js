@@ -31,9 +31,6 @@ function drawItems(data) {
         $('.db-style').last().text(value.sizeStyle);
         $('.db-price').last().text(value.pPrice);
         $('.db-total').text(0);
-
-        itemRemover();
-        priceCalculator();
     });
 
     $('.c-basket__item').first().remove();
@@ -43,25 +40,29 @@ function errorData() {
     $('.c-basket').html('<p class="unavailable">Services unavailable</p>');
 }
 
-function itemRemover() {
-    $('.item__close').on('click', function(){
+$('body')
+    .on('click', '.item__close', confirmRemove)
+    .on('keyup', '.qty__input', calculate)
+    .on('click', '.qty__update', calculate);
+
+$('.c-basket__button').on('click', function() {
+    console.log('Спасибо за покупку!')
+});
+
+function confirmRemove() {
+    if (confirm('Are you sure you want to remove this item?')) {
         $(this).parent().parent().remove();
-    });
+    }
 }
 
-function priceCalculator() {
-    $('.qty__update').on('click', calculate);
-    $('.qty__input').on('keyup', calculate);
+function calculate() {
+    var price = $(this).parent().parent().find('.db-price').text(),
+        amount = $(this).parent().find('.qty__input').val();
 
-    function calculate() {
-        var price = $(this).parent().parent().find('.db-price').text(),
-            amount = $(this).parent().find('.qty__input').val();
-
-        if ( validate(amount, this) ) {
-            $(this).parent().find('.db-total').text(+amount * +price);
-        } else {
-            $(this).parent().find('.db-total').text(0);
-        }
+    if ( validate(amount, this) ) {
+        $(this).parent().find('.db-total').text(+amount * +price);
+    } else {
+        $(this).parent().find('.db-total').text(0);
     }
 }
 
@@ -84,7 +85,3 @@ function drawError(err, t) {
 function removeError(t) {
     $(t).removeClass("error").parent().parent().parent().find('.l-errwrap').html('');
 }
-
-$('.c-basket__button').on('click', function() {
-   console.log('Спасибо за покупку!')
-});
