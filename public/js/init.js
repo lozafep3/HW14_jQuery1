@@ -1,5 +1,5 @@
-var errorCode = $('.l-errwrap').html();
-var regQTY = /^[1-9][0-9]*$/;
+var errorCode = $('.l-errwrap').html(),
+    regQTY = /^[1-9][0-9]*$/;
 
 $.getJSON("http://localhost:8080/data/data.json", loadData).fail(errorData);
 
@@ -20,17 +20,27 @@ function drawHeader(data) {
 
 function drawItems(data) {
     $.each(data.products, function(key, value) {
-        var vv = value.vehicle;
+        var vv = value.vehicle,
+            sum = value.totalProduct.stock + value.totalProduct.sklad;
 
-        $('.c-basket__item').find('.l-errwrap').html('');
         $('.c-basket__item').first().clone().appendTo('.l-items');
+        $('.l-errwrap').last().html('');
         $('.item__picture').last().attr('src', value.imgUrl);
         $('.db-header').last().text(value.pName);
         $('.db-id').last().text(value.id);
         $('.db-vehicle').last().text(vv.year + ' ' + vv.make + ' ' + vv.model + ' ' + vv.name + ' ' + vv.option);
         $('.db-style').last().text(value.sizeStyle);
         $('.db-price').last().text(value.pPrice);
-        $('.db-total').text(0);
+        $('.db-total').last().text(value.pPrice);
+
+        if (sum === 0) {
+            $('.db-total').last().text(0);
+            $('.qty__input').last().attr('disabled', 'disabled');
+            $('.l-errwrap').last().html(errorCode);
+            $('.error__text').last().text('The product out of stock');
+        } else {
+            $('.data__qty').last().data({'sum': sum, 'storeOnly': value.isInStoreOnly});
+        }
     });
 
     $('.c-basket__item').first().remove();
@@ -46,7 +56,29 @@ $('body')
     .on('click', '.qty__update', calculate);
 
 $('.c-basket__button').on('click', function() {
-    console.log('Спасибо за покупку!')
+    var arr = [];
+
+    $('.db-total').each(function() {
+        var storeOnly = $(this).parent().parent().data()['storeOnly'];
+        var total = $(this).text();
+
+        if (total > 1 && storeOnly === false) {
+            arr.push(total);
+        }
+    });
+
+    if (arr.length > 0) {
+        var checkout = 0;
+
+        for(var i = 0; i < arr.length; i++){
+            checkout += +arr[i];
+        }
+
+        console.log('Thank you for buying! Checkout sum: ' + checkout + '$');
+    } else {
+        console.log('Your basket is empty now');
+    }
+
 });
 
 function confirmRemove() {
@@ -67,11 +99,16 @@ function calculate() {
 }
 
 function validate(amount, t) {
+    var sum = $(t).parent().data()['sum'];
     var validQTY = regQTY.test(amount);
 
     if (validQTY) {
-        removeError(t);
-        return validQTY;
+        if (amount <= sum) {
+            removeError(t);
+            return true;
+        } else {
+            drawError('Sorry, the maximum quantity you can order is ' + sum, t);
+        }
     } else {
         drawError('Please set proper quantity', t);
     }
